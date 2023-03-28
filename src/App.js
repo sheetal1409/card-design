@@ -9,8 +9,7 @@ function App() {
   const [month, setMonth] = useState("00")
   const [year, setYear] = useState("00")
   const [cvc, setCvc] = useState("000")
-  const [displayCardNameError, setDisplayCardNameError] = useState(false)
-  const [displayCardNumError, setDisplayCardNumError] = useState(false)
+
   function cardNumValidate(event) {
     setCardNum(event.target.value)
 
@@ -32,17 +31,17 @@ function App() {
                 <label className="mb-1" for="cd-name">CARDHOLDER NAME</label>
                 <div>
                   <div className='w-10/12 hover:bg-gradient-to-r from-left to-right  rounded-md p-0.5' >
-                    <input required className='cardname w-full p-2  border border-gray-200 focus:outline-none rounded-md uppercase' type="text" name="name" onInvalid={() => setDisplayCardNameError(true)} pattern="[a-zA-Z ]{2,64}" onChange={(event) => setCardName(event.target.value)} placeholder='e.g. Jane Appleseed' />
+                    <input required className='cardname w-full p-2  border border-gray-200 focus:outline-none rounded-md uppercase' type="text" name="name" pattern="[a-zA-Z ]{2,64}" onChange={(event) => setCardName(event.target.value)} placeholder='e.g. Jane Appleseed' />
                   </div>
-                  {displayCardNameError && <p className=' text-red-700'>Card Owner name is mandatory</p>}
+
                 </div>
               </div>
               <div className='flex flex-col m-2'>
                 <label className="mb-1" for="cd-num">CARD NUMBER</label>
                 <div> <div className='w-10/12  hover:bg-gradient-to-r from-left to-right  rounded-md p-0.5' >
-                  <input className='w-full p-2  border border-gray-200 focus:outline-none rounded-md' validate required type="text" inputmode="numeric" id="cd-num" pattern="[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}" onInvalid={() => setDisplayCardNumError(true)} onChange={cardNumValidate} placeholder='1234 5678 9123 0000' />
+                  <input className='w-full p-2  border border-gray-200 focus:outline-none rounded-md' validate required type="text" inputmode="numeric" id="cd-num" pattern="[0-9]{4}[ ][0-9]{4}[ ][0-9]{4}[ ][0-9]{4}" onChange={cardNumValidate} placeholder='1234 5678 9123 0000' />
                 </div>
-                  {displayCardNumError && <p className='text-red-700'>Card Number Format Invalid</p>}
+
                 </div>
               </div>
             </div>
